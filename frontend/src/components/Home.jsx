@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import Header from "./Header";
 import Post from "./Post";
+import { API_BASE_URL } from "../config";
 
 function Home() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     async function fetchPosts() {
-      const response = await fetch("http://localhost:3000/api/v1/posts");
+      const response = await fetch(`${API_BASE_URL}/api/v1/posts`);
       const data = await response.json();
       setPosts(data.data);
     }
